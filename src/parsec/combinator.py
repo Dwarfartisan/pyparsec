@@ -76,10 +76,10 @@ def many1(p):
             return re
     return call
 
-def sep(s, p):
-    return choice(attempt(sep1(s, p)), pack([]))
+def sep(p, s):
+    return choice(attempt(sep1(p, s)), pack([]))
 
-def sep1(s, p):
+def sep1(p, s):
     @Parsec
     def call(state):
         re = []
