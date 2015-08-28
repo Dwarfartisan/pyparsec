@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #coding:utf-8
-from error import ParsecError, ParsecEof
+from parsec.error import ParsecError, ParsecEof
 from parsec import Parsec
 
 @Parsec

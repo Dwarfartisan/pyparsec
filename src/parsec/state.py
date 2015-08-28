@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # coding:utf-8
-from error import ParsecEof
+from parsec.error import ParsecEof
 
 class BasicState(object):
     def __init__(self, data):

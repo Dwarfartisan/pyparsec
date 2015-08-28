@@ -2,7 +2,7 @@
 # coding:utf-8
 
 from parsec import Parsec
-from atom import pack
+from parsec.atom import pack
 
 def attempt(p):
     @Parsec
