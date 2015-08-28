@@ -4,12 +4,12 @@
 import unittest
 from parsec import *
 
-simple = "It is a simple string."
+sample = "It is a simple string."
 
 class TestState(unittest.TestCase):
     def test_next(self):
-        st = BasicState(simple)
-        for i in range(len(simple)):
+        st = BasicState(sample)
+        for i in range(len(sample)):
             idx = st.index
             re = st.next()
             self.assertEqual(re, st.data[idx])

@@ -3,6 +3,7 @@
 
 from parsec import Parsec
 from parsec.atom import pack
+from parsec.error import ParsecError
 
 def attempt(p):
     @Parsec
@@ -45,15 +46,15 @@ def choice(x, y):
 
 def choices(*psc):
     if len(psc)<2:
-        raise ParsecError(-1, "choices need more args than one.")
+        raise "choices need more args than one."
     @Parsec
     def call(st):
-        for p in psc[-1:]:
+        for p in psc[:-1]:
             prev = st.index
             try:
                 return p(st)
             except:
-                if self.index != prev:
+                if st.index != prev:
                     raise
         else:
             return psc[-1](st)
@@ -104,3 +105,15 @@ def sepTail(s, p, t):
 
 def sep1Tail(s, p, t):
     return sep1(s, p).over(t)
+
+def skip(s):
+    @Parsec
+    def call(state):
+        try:
+            while True:
+                attempt(s)(state)
+        except:
+            pass
+        finally:
+            return None
+    return call
