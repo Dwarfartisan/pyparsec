@@ -8,11 +8,13 @@ from parsec.error import ParsecError
 def attempt(p):
     @Parsec
     def call(state):
-        prev = state.index
+        tran = state.begin
+#        prev = state.index
         try:
             return p(state)
+            state.commit(tran)
         except:
-            state.index=prev
+            state.rollback(tran)
             raise
     return call
 
