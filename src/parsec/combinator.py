@@ -11,8 +11,8 @@ def attempt(p):
         tran = state.begin
 #        prev = state.index
         try:
-            return p(state)
             state.commit(tran)
+            return p(state)
         except:
             state.rollback(tran)
             raise
