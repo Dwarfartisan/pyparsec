@@ -8,8 +8,7 @@ from parsec.error import ParsecError
 def attempt(p):
     @Parsec
     def call(state):
-        tran = state.begin
-#        prev = state.index
+        tran = state.begin()
         try:
             state.commit(tran)
             return p(state)

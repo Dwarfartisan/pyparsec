@@ -6,7 +6,7 @@ class BasicState(object):
     def __init__(self, data):
         self.data = data
         self.index = 0
-        self.begin = -1
+        self.tran = -1
 
     def next(self):
         if 0 <= self.index < len(self.data):
@@ -17,10 +17,10 @@ class BasicState(object):
             raise ParsecEof(self)
 
     def begin(self):
-        if self.begin == -1 :
-            self.begin = self.index
+        if self.tran == -1 :
+            self.tran = self.index
         else:
-            self.begin = min(self.begin,self.index)
+            self.tran = min(self.tran, self.index)
         return self.index
 
     def commit (self, tran):
@@ -38,4 +38,3 @@ def min (elemnet1,element2):
     if elemnet1 < element2:
         return elemnet1
     return element2
-        
