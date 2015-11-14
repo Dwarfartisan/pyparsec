@@ -19,8 +19,7 @@ class BasicState(object):
     def begin(self):
         if self.tran == -1 :
             self.tran = self.index
-        else:
-            self.tran = min(self.tran, self.index)
+
         return self.index
 
     def commit (self, tran):
@@ -32,9 +31,3 @@ class BasicState(object):
             self.index = tran
         if self.begin  ==tran:
             self.begin = -1
-
-
-def min (elemnet1,element2):
-    if elemnet1 < element2:
-        return elemnet1
-    return element2
