@@ -10,4 +10,5 @@ from .text import string, space
 
 __all__ = ["Parsec", "BasicState", "one", "eof", "eq", "ne", "oneOf", "noneOf",
     "pack", "fail", "attempt", "choice", "choices", "many", "many1", "manyTail",
-    "many1Tail", "sep", "sep1", "sepTail", "sep1Tail", "skip", "string", "space"]
+    "many1Tail", "sep", "sep1", "sepTail", "sep1Tail", "skip", "string", "space",
+    "ParsecEof", "ParsecError"]

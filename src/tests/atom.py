@@ -15,7 +15,7 @@ class TestAtom(unittest.TestCase):
             self.assertEqual(re, st.data[idx])
         with self.assertRaises(Exception) as err:
             one(st)
-        self.assertTrue(issubclass(type(err.exception), error.ParsecEof))
+        self.assertTrue(issubclass(type(err.exception), ParsecEof))
 
     def test_eof(self):
         st = BasicState(simple)
@@ -67,7 +67,7 @@ class TestAtom(unittest.TestCase):
     def test_fail(self):
         st = BasicState(simple)
         p = fail("z")
-        with self.assertRaises(error.ParsecError):
+        with self.assertRaises(ParsecError):
             p(st)
 
 if __name__ == '__main__':

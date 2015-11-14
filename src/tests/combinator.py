@@ -45,7 +45,7 @@ class TestCombinator(unittest.TestCase):
     def test_many1_2(self):
         st = BasicState(simple)
         p = many1(eq("z"))
-        with self.assertRaises(error.ParsecError):
+        with self.assertRaises(ParsecError):
             p(st)
 
     def test_sep_0(self):

@@ -15,7 +15,7 @@ class TestState(unittest.TestCase):
             self.assertEqual(re, st.data[idx])
         with self.assertRaises(Exception) as err:
             st.next()
-        self.assertTrue(issubclass(type(err.exception), error.ParsecEof))
+        self.assertTrue(issubclass(type(err.exception), ParsecEof))
 
 if __name__ == '__main__':
     unittest.main()
