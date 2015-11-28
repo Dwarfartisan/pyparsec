@@ -27,7 +27,6 @@ class BasicState(object):
             self.begin = -1
 
     def rollback (self, tran):
-        if 0 <= self.index < len(self.data):
-            self.index = tran
+        self.index = tran
         if self.begin  ==tran:
             self.begin = -1

@@ -118,3 +118,12 @@ def skip(s):
         finally:
             return None
     return call
+
+def between(openp, closep, psc):
+    @Parsec
+    def call(state):
+        openp(state)
+        re = psc(state)
+        closep(state)
+        return re
+    return call
