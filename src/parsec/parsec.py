@@ -8,7 +8,8 @@ class Parsec(object):
         return self.parsec(st)
     def bind(self, continuation):
         def bind(st):
-            return continuation(self.parsec(st))
+            binder = continuation(self.parsec(st))
+            return binder(st)
         return Parsec(bind)
     def then(self, p):
         def then(st):

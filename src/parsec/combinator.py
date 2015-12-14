@@ -10,11 +10,12 @@ def attempt(p):
     def call(state):
         tran = state.begin()
         try:
+            re = p(state)
             state.commit(tran)
-            return p(state)
-        except:
+            return re
+        except Exception as err:
             state.rollback(tran)
-            raise
+            raise err
     return call
 
 class Either(Parsec):
@@ -89,7 +90,7 @@ def sep1(p, s):
         try:
             while True:
                 re.append(attempt(s.then(p))(state))
-        except:
+        except Exception as err:
             pass
         finally:
             return re

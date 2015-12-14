@@ -14,28 +14,42 @@ digit = oneOf(string.digits)
 
 @Parsec
 def integer(st):
-    re = many1(st)
-    return int(re)
+    re = many1(digit)(st)
+    return int("".join(re))
 
 def mulN(x):
-    y = one("*").then(N)(st)
-    return x*y
+    @Parsec
+    def func(st):
+        y = eq("*").then(N)(st)
+        return x*y
+    return func
 
-def addT(x):
-    y = one("+").then(T)(st)
-    return x+y
+def addF(x):
+    @Parsec
+    def func(st):
+        y = eq("+").then(F)(st)
+        return x+y
+    return func
 
 @Parsec
 def N(st):
-    return choice(integer, T)(st)
+    return choice(attempt(integer), between(eq('('), eq(')'), T))(st)
 
 @Parsec
 def F(st):
-    return choice(N, F.bind(mulN))(st)
+    # x = choice(attempt(N), F)(st)
+    # eq('*')(st)
+    # y = N(st)
+    # return x * y
+    return choice(attempt(N), F).bind(mulN)(st)
 
 @Parsec
 def T(st):
-    return choice(F, T.bind(addT))(st)
+    # x = choices(attempt(F), T)(st)
+    # eq('+')(st)
+    # y = F(st)
+    # return x + y
+    return choice(attempt(F), T).bind(addF)(st)
 
 if __name__ == '__main__':
     st = BasicState(input)
