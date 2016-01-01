@@ -96,7 +96,7 @@ def sep1(p, s):
             return re
     return call
 
-def manyTail(p, t):
+def manyTil(p, t):
     return many(p).over(t)
 
 def many1Tail(p):

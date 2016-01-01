@@ -5,10 +5,10 @@ from .error import *
 from .parsec import Parsec
 from .state import BasicState
 from .atom import one, eof, eq, ne, oneOf, noneOf, pack, fail
-from .combinator import attempt, choice, choices, many, many1, manyTail, many1Tail, sep, sep1, sepTail, sep1Tail, skip, between
+from .combinator import attempt, choice, choices, many, many1, manyTil, many1Tail, sep, sep1, sepTail, sep1Tail, skip, between
 from .text import string, space
 
 __all__ = ["Parsec", "BasicState", "one", "eof", "eq", "ne", "oneOf", "noneOf",
-    "pack", "fail", "attempt", "choice", "choices", "many", "many1", "manyTail",
+    "pack", "fail", "attempt", "choice", "choices", "many", "many1", "manyTil",
     "between", "many1Tail", "sep", "sep1", "sepTail", "sep1Tail", "skip", "string",
     "space", "ParsecEof", "ParsecError"]
