@@ -23,10 +23,10 @@ class BasicState(object):
         return self.index
 
     def commit (self, tran):
-        if self.begin == tran:
-            self.begin = -1
+        if self.tran == tran:
+            self.tran = -1
 
     def rollback (self, tran):
         self.index = tran
-        if self.begin  ==tran:
-            self.begin = -1
+        if self.tran  ==tran:
+            self.tran = -1
