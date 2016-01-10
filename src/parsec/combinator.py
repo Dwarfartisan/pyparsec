@@ -96,11 +96,19 @@ def sep1(p, s):
             return re
     return call
 
-def manyTil(p, t):
-    return many(p).over(t)
+def manyTill(p, t):
+    @Parsec
+    def call(state):
+        re = []
+        end = attempt(t)
+        while True:
+            try:
+                end(state)
+                return re
+            except Exception as err:
+                re.append(p(state))
 
-def many1Tail(p):
-    return many1.over(t)
+    return call
 
 def sepTail(s, p, t):
     return sep(s, p).over(t)
