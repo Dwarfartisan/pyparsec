@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PyParsec
 
 PyParsec is a Haskell combinator library, PyParsec is a parsec library for python 3+
@@ -20,3 +21,7 @@ Just like this:
 >>> p(st)
 ['I']
 ```
+=======
+# pyparsec
+A Haskell Parsec Library's Python Edition Implementation.
+>>>>>>> origin/master
